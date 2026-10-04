@@ -1,11 +1,7 @@
 <?php
+use App\Controllers\StudentController;
 
-use CodeIgniter\Router\RouteCollection;
-
-/** @var RouteCollection $routes */
-
-// 1. Loads Home controller when visiting http://localhost/ITE311-Villar/public/
-$routes->get('/', 'Home::index');
-
-// 2. Loads Home controller when visiting http://localhost/ITE311-Villar/public/index.php/home
-$routes->get('home', 'Home::index');
+$routes->get('students', [StudentController::class, 'index']);
+$routes->get('students/create', [StudentController::class, 'create']);
+$routes->post('students/store', [StudentController::class, 'store']);
+$routes->get('students/delete/(:num)', [StudentController::class, 'delete/$1']);
