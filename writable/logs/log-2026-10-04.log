@@ -96,3 +96,131 @@ FROM `students`', [], false)
 10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\ITE311-Villar\\public\\index.php')
+ERROR - 2026-10-04 12:27:41 --> Table 'submissions' already exists
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('CREATE TABLE `submissions` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`quiz_id` INT(11) UNSIGNED NOT NULL,
+	`user_id` INT(11) UNSIGNED NOT NULL,
+	`answer` TEXT NOT NULL,
+	`score` INT(5) NOT NULL DEFAULT 0,
+	`submitted_at` DATETIME NULL,
+	CONSTRAINT `pk_submissions` PRIMARY KEY(`id`),
+	CONSTRAINT `submissions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `submissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(908): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `submissions` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`quiz_id` INT(11) UNSIGNED NOT NULL,
+	`user_id` INT(11) UNSIGNED NOT NULL,
+	`answer` TEXT NOT NULL,
+	`score` INT(5) NOT NULL DEFAULT 0,
+	`submitted_at` DATETIME NULL,
+	CONSTRAINT `pk_submissions` PRIMARY KEY(`id`),
+	CONSTRAINT `submissions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `submissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci')
+ 3 SYSTEMPATH\Database\BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `submissions` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`quiz_id` INT(11) UNSIGNED NOT NULL,
+	`user_id` INT(11) UNSIGNED NOT NULL,
+	`answer` TEXT NOT NULL,
+	`score` INT(5) NOT NULL DEFAULT 0,
+	`submitted_at` DATETIME NULL,
+	CONSTRAINT `pk_submissions` PRIMARY KEY(`id`),
+	CONSTRAINT `submissions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `submissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci')
+ 4 SYSTEMPATH\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `submissions` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`quiz_id` INT(11) UNSIGNED NOT NULL,
+	`user_id` INT(11) UNSIGNED NOT NULL,
+	`answer` TEXT NOT NULL,
+	`score` INT(5) NOT NULL DEFAULT 0,
+	`submitted_at` DATETIME NULL,
+	CONSTRAINT `pk_submissions` PRIMARY KEY(`id`),
+	CONSTRAINT `submissions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT `submissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci')
+ 5 APPPATH\Database\Migrations\2026-10-04-120253_CreateStudentsTable.php(18): CodeIgniter\Database\Forge->createTable('submissions')
+ 6 SYSTEMPATH\Database\MigrationRunner.php(1014): App\Database\Migrations\CreateSubmissionsTable->up()
+ 7 SYSTEMPATH\Database\MigrationRunner.php(202): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+ 8 SYSTEMPATH\Commands\Database\Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest(null)
+ 9 SYSTEMPATH\CLI\SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::CodeIgniter\Commands\Database\{closure}()
+10 SYSTEMPATH\Commands\Database\Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked(Object(Closure))
+11 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Migrate->run([])
+12 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', [])
+13 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+14 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+15 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2026-10-04 12:27:41 --> ErrorException: require(C:\xampp\htdocs\ITE311-Villar\app\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: migrate]
+in SYSTEMPATH\CLI\BaseCommand.php on line 133.
+ 1 SYSTEMPATH\CLI\BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(C:\\xampp\\htdocs\\ITE311-Villar\\app\\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\ITE311-Villar\\system\\CLI\\BaseCommand.php', 133)
+ 2 SYSTEMPATH\CLI\BaseCommand.php(133): require()
+ 3 SYSTEMPATH\Commands\Database\Migrate.php(104): CodeIgniter\CLI\BaseCommand->showError(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+ 4 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Migrate->run([])
+ 5 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', [])
+ 6 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 8 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2026-10-04 12:28:02 --> Duplicate entry 'admin@lms.com' for key 'email'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:02\',\'admin@lms.com\',\'System Admin\',\'$2y$10$q7S4q1J7lqIQZOX2iFn0PuMV/YNcG2kfBZgERRkmMUJEDDkeMGYPS\',\'admin\'), (\'2026-10-04 12:28:02\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$nYpEZQB5qU7Suo0Xt6y8M.aWoepUyw/8Rtqjw75fn.Hnu3Do6FGZe\',\'instructor\'), (\'2026-10-04 12:28:02\',\'student@lms.com\',\'Student Jane\',\'$2y$10$.4e8RqArQaNUg9IGRH/9.eJaG4niKB7G7J8UA9IxXFXu0Hm5xcs.m\',\'student\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(908): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:02\',\'admin@lms.com\',\'System Admin\',\'$2y$10$q7S4q1J7lqIQZOX2iFn0PuMV/YNcG2kfBZgERRkmMUJEDDkeMGYPS\',\'admin\'), (\'2026-10-04 12:28:02\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$nYpEZQB5qU7Suo0Xt6y8M.aWoepUyw/8Rtqjw75fn.Hnu3Do6FGZe\',\'instructor\'), (\'2026-10-04 12:28:02\',\'student@lms.com\',\'Student Jane\',\'$2y$10$.4e8RqArQaNUg9IGRH/9.eJaG4niKB7G7J8UA9IxXFXu0Hm5xcs.m\',\'student\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:02\',\'admin@lms.com\',\'System Admin\',\'$2y$10$q7S4q1J7lqIQZOX2iFn0PuMV/YNcG2kfBZgERRkmMUJEDDkeMGYPS\',\'admin\'), (\'2026-10-04 12:28:02\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$nYpEZQB5qU7Suo0Xt6y8M.aWoepUyw/8Rtqjw75fn.Hnu3Do6FGZe\',\'instructor\'), (\'2026-10-04 12:28:02\',\'student@lms.com\',\'Student Jane\',\'$2y$10$.4e8RqArQaNUg9IGRH/9.eJaG4niKB7G7J8UA9IxXFXu0Hm5xcs.m\',\'student\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1851): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:02\',\'admin@lms.com\',\'System Admin\',\'$2y$10$q7S4q1J7lqIQZOX2iFn0PuMV/YNcG2kfBZgERRkmMUJEDDkeMGYPS\',\'admin\'), (\'2026-10-04 12:28:02\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$nYpEZQB5qU7Suo0Xt6y8M.aWoepUyw/8Rtqjw75fn.Hnu3Do6FGZe\',\'instructor\'), (\'2026-10-04 12:28:02\',\'student@lms.com\',\'Student Jane\',\'$2y$10$.4e8RqArQaNUg9IGRH/9.eJaG4niKB7G7J8UA9IxXFXu0Hm5xcs.m\',\'student\')', null, false)
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2240): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 6 APPPATH\Database\Seeds\UserSeeder.php(32): CodeIgniter\Database\BaseBuilder->insertBatch([...])
+ 7 SYSTEMPATH\Database\Seeder.php(155): App\Database\Seeds\UserSeeder->run()
+ 8 SYSTEMPATH\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Seeds\\UserSeeder')
+ 9 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Seed->run([])
+10 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+11 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+12 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+13 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2026-10-04 12:28:02 --> ErrorException: require(C:\xampp\htdocs\ITE311-Villar\app\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH\CLI\BaseCommand.php on line 133.
+ 1 SYSTEMPATH\CLI\BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(C:\\xampp\\htdocs\\ITE311-Villar\\app\\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\ITE311-Villar\\system\\CLI\\BaseCommand.php', 133)
+ 2 SYSTEMPATH\CLI\BaseCommand.php(133): require()
+ 3 SYSTEMPATH\Commands\Database\Seed.php(81): CodeIgniter\CLI\BaseCommand->showError(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+ 4 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Seed->run([])
+ 5 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+ 6 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 8 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+ERROR - 2026-10-04 12:28:12 --> Duplicate entry 'admin@lms.com' for key 'email'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:12\',\'admin@lms.com\',\'System Admin\',\'$2y$10$12c8BUayxr1anB.GiCcUu.ziYiMPRIg6nUYrtkR/B63Tg4ZrevIia\',\'admin\'), (\'2026-10-04 12:28:12\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$8CyC9QVxbh3/0MDI6E3h4OOA8h2CZLnvfqhoWjvtspndsyZS5/ULK\',\'instructor\'), (\'2026-10-04 12:28:12\',\'student@lms.com\',\'Student Jane\',\'$2y$10$A7xnpEX7O4BLeIyzIT7tjOFeK0saFhebAwXoIZI4C3a25LHyCzSsi\',\'student\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(908): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:12\',\'admin@lms.com\',\'System Admin\',\'$2y$10$12c8BUayxr1anB.GiCcUu.ziYiMPRIg6nUYrtkR/B63Tg4ZrevIia\',\'admin\'), (\'2026-10-04 12:28:12\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$8CyC9QVxbh3/0MDI6E3h4OOA8h2CZLnvfqhoWjvtspndsyZS5/ULK\',\'instructor\'), (\'2026-10-04 12:28:12\',\'student@lms.com\',\'Student Jane\',\'$2y$10$A7xnpEX7O4BLeIyzIT7tjOFeK0saFhebAwXoIZI4C3a25LHyCzSsi\',\'student\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(825): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:12\',\'admin@lms.com\',\'System Admin\',\'$2y$10$12c8BUayxr1anB.GiCcUu.ziYiMPRIg6nUYrtkR/B63Tg4ZrevIia\',\'admin\'), (\'2026-10-04 12:28:12\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$8CyC9QVxbh3/0MDI6E3h4OOA8h2CZLnvfqhoWjvtspndsyZS5/ULK\',\'instructor\'), (\'2026-10-04 12:28:12\',\'student@lms.com\',\'Student Jane\',\'$2y$10$A7xnpEX7O4BLeIyzIT7tjOFeK0saFhebAwXoIZI4C3a25LHyCzSsi\',\'student\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1851): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`created_at`, `email`, `name`, `password`, `role`)
+VALUES (\'2026-10-04 12:28:12\',\'admin@lms.com\',\'System Admin\',\'$2y$10$12c8BUayxr1anB.GiCcUu.ziYiMPRIg6nUYrtkR/B63Tg4ZrevIia\',\'admin\'), (\'2026-10-04 12:28:12\',\'instructor@lms.com\',\'Instructor John\',\'$2y$10$8CyC9QVxbh3/0MDI6E3h4OOA8h2CZLnvfqhoWjvtspndsyZS5/ULK\',\'instructor\'), (\'2026-10-04 12:28:12\',\'student@lms.com\',\'Student Jane\',\'$2y$10$A7xnpEX7O4BLeIyzIT7tjOFeK0saFhebAwXoIZI4C3a25LHyCzSsi\',\'student\')', null, false)
+ 5 SYSTEMPATH\Database\BaseBuilder.php(2240): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 6 APPPATH\Database\Seeds\UserSeeder.php(32): CodeIgniter\Database\BaseBuilder->insertBatch([...])
+ 7 SYSTEMPATH\Database\Seeder.php(155): App\Database\Seeds\UserSeeder->run()
+ 8 SYSTEMPATH\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Seeds\\UserSeeder')
+ 9 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Seed->run([])
+10 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+11 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+12 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+13 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2026-10-04 12:28:12 --> ErrorException: require(C:\xampp\htdocs\ITE311-Villar\app\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory
+[Method: CLI, Route: db:seed/UserSeeder]
+in SYSTEMPATH\CLI\BaseCommand.php on line 133.
+ 1 SYSTEMPATH\CLI\BaseCommand.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(C:\\xampp\\htdocs\\ITE311-Villar\\app\\Views/errors/cli/error_exception.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\ITE311-Villar\\system\\CLI\\BaseCommand.php', 133)
+ 2 SYSTEMPATH\CLI\BaseCommand.php(133): require()
+ 3 SYSTEMPATH\Commands\Database\Seed.php(81): CodeIgniter\CLI\BaseCommand->showError(Object(CodeIgniter\Database\Exceptions\DatabaseException))
+ 4 SYSTEMPATH\CLI\Commands.php(72): CodeIgniter\Commands\Database\Seed->run([])
+ 5 SYSTEMPATH\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', [...])
+ 6 SYSTEMPATH\Boot.php(444): CodeIgniter\CLI\Console->run()
+ 7 SYSTEMPATH\Boot.php(166): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 8 ROOTPATH\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
